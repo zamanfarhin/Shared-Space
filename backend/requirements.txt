@@ -1,7 +1,7 @@
 --prefer-binary
 Flask==2.2.2
 Flask-Cors==3.0.10
-transformers==4.31.0
+transformers==4.20.1
 torch==2.5.0
 
 
