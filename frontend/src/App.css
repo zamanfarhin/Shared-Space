@@ -1,0 +1,43 @@
+.App {
+    text-align: left;
+    padding: 3rem;
+    background-color: #121212;
+    color: white;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .generator-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .prompt-text {
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+  
+  .dropdown {
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: #1e1e1e;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 4px;
+  }
+  
+  .generate-button {
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
