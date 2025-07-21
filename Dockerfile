@@ -16,10 +16,14 @@ WORKDIR /app
 # Install dependencies
 COPY backend/requirements.txt .
 RUN pip install --upgrade pip
-RUN pip install --prefer-binary -r requirements.txt
+RUN pip install --prefer-binary --only-binary=tokenizers -r requirements.txt
 
 # Copy your backend app code
 COPY backend/ .
 
+# Expose port for Render to bind to
+EXPOSE 10000
+
 # Run your app
 CMD ["python", "app.py"]
+
