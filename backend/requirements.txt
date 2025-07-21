@@ -1,7 +1,8 @@
+--prefer-binary
+--only-binary=tokenizers
 Flask==2.2.2
 Flask-Cors==3.0.10
 transformers==4.20.1
-tokenizers==0.13.3 --only-binary=:all:
+tokenizers==0.13.3
 torch==2.5.0
 torchvision==0.16.0
-
