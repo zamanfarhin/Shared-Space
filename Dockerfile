@@ -18,12 +18,16 @@ COPY backend/requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --prefer-binary --only-binary=tokenizers -r requirements.txt
 
-# Copy your backend app code
+# ✅ Copy backend files
 COPY backend/ .
+
+# ✅ Explicitly copy aesthetic_profiles folder
+COPY backend/aesthetic_profiles ./aesthetic_profiles
 
 # Expose port for Render to bind to
 EXPOSE 10000
 
 # Run your app
 CMD ["python", "app.py"]
+
 
