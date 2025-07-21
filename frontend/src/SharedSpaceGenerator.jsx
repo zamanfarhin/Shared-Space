@@ -6,9 +6,7 @@ const names = [
   { label: 'Orhan Pamuk', value: 'orhan_pamuk' },
   { label: 'Humayun Ahmed', value: 'humayun_ahmed' }
 ];
-
-const API_URL = 'http://127.0.0.1:5000/generate';
-
+const API_URL = 'https://shared-space-backend.onrender.com/generate';
 function SharedSpaceGenerator() {
   const [selected, setSelected] = useState('');
   const [profile, setProfile] = useState(null);
