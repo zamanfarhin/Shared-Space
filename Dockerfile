@@ -10,16 +10,16 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Set work directory
+# Set working directory inside container
 WORKDIR /app
 
-# Install dependencies
-COPY requirements.txt .
+# Copy backend requirements and install dependencies
+COPY backend/requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --prefer-binary -r requirements.txt
 
-# Copy all your code into the container
-COPY . .
+# Copy all backend source code into the container
+COPY backend/ .
 
-# Run your app (replace with your actual startup file if different)
+# Run your app
 CMD ["python", "app.py"]
