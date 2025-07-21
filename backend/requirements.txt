@@ -4,6 +4,6 @@
 Flask==2.2.2
 Flask-Cors==3.0.10
 transformers==4.20.1
-tokenizers==0.13.2
+tokenizers==0.12.1
 torch==2.0.0
 torchvision==0.15.1
