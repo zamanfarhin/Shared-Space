@@ -1,0 +1,11 @@
+torch>=2.0.0
+torchvision
+diffusers>=0.21.0
+transformers>=4.25.0
+accelerate>=0.20.0
+gradio>=4.0.0
+pillow>=9.0.0
+numpy>=1.21.0
+scikit-learn>=1.0.0
+huggingface_hub>=0.16.0
+safetensors>=0.3.0

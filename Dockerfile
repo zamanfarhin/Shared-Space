@@ -1,33 +1,43 @@
 # Use official lightweight Python image
 FROM python:3.10-slim
 
-# Avoid interactive prompts during install
-ENV DEBIAN_FRONTEND=noninteractive
+# Set environment variables
+ENV PYTHONUNBUFFERED=1
+ENV PIP_NO_CACHE_DIR=1
+ENV HF_HOME=/tmp/hf_cache
+ENV TRANSFORMERS_CACHE=/tmp/hf_cache
+ENV HF_DATASETS_CACHE=/tmp/hf_cache
+ENV HUGGINGFACE_HUB_CACHE=/tmp/hf_cache
 
-# Install build dependencies
-RUN apt-get update && apt-get install -y \
-    gcc \
-    git \
-    && rm -rf /var/lib/apt/lists/*
-
-# Set work directory
+# Create app directory
 WORKDIR /app
 
-# Install dependencies
-COPY backend/requirements.txt .
-RUN pip install --upgrade pip
-RUN pip install --prefer-binary --only-binary=tokenizers -r requirements.txt
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    wget \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
-# ✅ Copy backend files
-COPY backend/ .
+# Create cache directory
+RUN mkdir -p /tmp/hf_cache
 
-# ✅ Explicitly copy aesthetic_profiles folder
-COPY backend/aesthetic_profiles ./aesthetic_profiles
+# Copy requirements first for better caching
+COPY requirements.txt .
 
-# Expose port for Render to bind to
-EXPOSE 10000
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Run your app
+# Copy application files
+COPY . .
+
+# Make scripts executable
+RUN chmod +x startup.py app.py
+
+# Expose port
+EXPOSE 7860
+
+# Set the startup command
 CMD ["python", "app.py"]
 
 
